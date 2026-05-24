@@ -1,0 +1,12 @@
+crewai
+groq
+requests
+feedparser
+python-dotenv
+beautifulsoup4
+newspaper3k
+lxml_html_clean
+fpdf2
+numpy
+matplotlib
+litellm
