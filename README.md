@@ -15,9 +15,11 @@ Built by a 2nd year CS student. Zero infrastructure cost.
 
 ## Live Demo
 
-**Sample Output:** [`samples/sample_brief_Paytm.pdf`](samples/sample_brief_Paytm.pdf)
-
+**Sample Output 1:** [`samples/sample_brief_Paytm.pdf`](samples/sample_brief_Paytm.pdf)
 *Paytm — Path to profitability amid competition from PhonePe and GPay*
+
+**Sample Output 2:** [`samples/sample_brief_Zomato.pdf`](samples/sample_brief_Zomato.pdf)
+*Zomato — Gig Worker Strike Impact on Operations and Long Term Strategy*
 
 ---
 
