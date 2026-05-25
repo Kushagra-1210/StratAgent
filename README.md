@@ -67,8 +67,9 @@ OUTPUT — Professional PDF saved to output/
   • Strategic Tension
   • 3 Strategic Options
   • Recommendation
-  • Data Confidence section
-  • Key Financial Metrics chart (ROCE, ROE, PE Ratio)
+  • Data Confidence Score (1-5 based on source gaps)
+  • Financial Metrics 1x2 Subplot (Returns vs. Valuation)
+  • Generation Runtime Analytics
 ```
 
 ---
@@ -85,13 +86,19 @@ The result is more rigorous, more balanced, and more honest than any single-pass
 
 ## Framework Selection Logic
 
-StratAgent dynamically selects the most appropriate analytical framework based on the problem type:
+StratAgent dynamically selects the most appropriate analytical framework using 10 priority-ordered rules based on the problem type:
 
 | Framework | Author | Year | Used For |
 |---|---|---|---|
+| Treacy & Wiersema Value Disciplines | Treacy & Wiersema | 1995 | Strategic positioning, value proposition |
 | Porter's Five Forces | Michael Porter | 1979 | Competitive dynamics, market entry |
+| Ansoff Matrix | Igor Ansoff | 1957 | Growth strategies, expansion |
+| Value Chain Analysis | Michael Porter | 1985 | Cost reduction, profitability |
 | McKinsey 7S | Peters & Waterman | 1980 | Organizational alignment, internal gaps |
 | BCG Matrix | Bruce Henderson | 1970 | Portfolio decisions, resource allocation |
+| Scenario Planning | Shell/GBN | 1970s | Macro uncertainty, regulatory risk |
+| Jobs To Be Done | Clayton Christensen | 2016 | Customer behavior, product innovation |
+| VRIO Framework | Jay Barney | 1991 | Competitive advantage sustainability |
 | MECE Issue Tree | McKinsey standard | — | Root cause analysis, problem decomposition |
 
 ---

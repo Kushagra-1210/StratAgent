@@ -1307,7 +1307,7 @@ def save_brief(
         content = clean_for_pdf(content)
             
         # 2. Generate Chart
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4))
         metrics = ['ROCE', 'ROE', 'PE Ratio']
         values = []
         labels = []
@@ -1319,15 +1319,28 @@ def save_brief(
                 values.append(0.0)
                 labels.append("Data unavailable")
                 
-        bars = ax.bar(metrics, values, color=['#4F46E5', '#10B981', '#F59E0B'])
-        ax.set_title(f'Key Financial Metrics: {company_name}')
-        ax.set_ylabel('Value')
-        
-        # Add labels on top of bars
-        for i, bar in enumerate(bars):
+        # Plot 1: Returns (ROCE, ROE)
+        bars1 = ax1.bar(['ROCE', 'ROE'], [values[0], values[1]], color=['#4F46E5', '#10B981'])
+        ax1.set_title('Returns (%)')
+        ax1.set_ylabel('Value (%)')
+        for i, bar in enumerate(bars1):
             yval = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2, max(yval, 0.5), labels[i], ha='center', va='bottom', fontsize=9)
+            va = 'bottom' if yval >= 0 else 'top'
+            offset = yval + (0.5 if yval >= 0 else -0.5)
+            ax1.text(bar.get_x() + bar.get_width()/2, offset, labels[i], ha='center', va=va, fontsize=9)
             
+        # Plot 2: Valuation (PE)
+        bars2 = ax2.bar(['PE Ratio'], [values[2]], color=['#F59E0B'])
+        ax2.set_title('Valuation')
+        ax2.set_ylabel('Price-to-Earnings')
+        for i, bar in enumerate(bars2):
+            yval = bar.get_height()
+            va = 'bottom' if yval >= 0 else 'top'
+            offset = max(yval, 0.5) if yval >= 0 else min(yval, -0.5)
+            ax2.text(bar.get_x() + bar.get_width()/2, offset, labels[2], ha='center', va=va, fontsize=9)
+            
+        fig.suptitle(f'Key Financial Metrics: {company_name}')
+        plt.tight_layout()
         chart_path = os.path.join("output", f"{safe_company_name}_chart_{timestamp}.png")
         plt.savefig(chart_path, bbox_inches='tight')
         plt.close()

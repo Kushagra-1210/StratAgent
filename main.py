@@ -85,9 +85,15 @@ def main():
         from tools import fetch_news, fetch_financials, save_brief, parse_pullquote
         import time
 
+        start_time = time.time()
         print("Fetching News and Financials natively...")
         news_data = fetch_news(company)
         financials_data = fetch_financials(company)
+        
+        sources_found = 0
+        if not news_data.startswith("Data unavailable"): sources_found += 1
+        if not financials_data.startswith("Data unavailable"): sources_found += 1
+        confidence_score = 5 if sources_found == 2 else (3 if sources_found == 1 else 1)
         
         research_data = f"News: {news_data}\n\nFinancials: {financials_data}"
 
@@ -138,7 +144,8 @@ def main():
             "company_name": company,
             "problem": problem,
             "draft_strategy": draft_result,
-            "partner_critique": critique_result
+            "partner_critique": critique_result,
+            "confidence_score": confidence_score
         }))
 
         pullquote = parse_pullquote(final_result)
@@ -153,7 +160,17 @@ def main():
         print("="*50 + "\n")
         print(final_result)
         print("\n" + "="*50)
-        print(save_msg)
+        
+        elapsed = time.time() - start_time
+        mins = int(elapsed // 60)
+        secs = int(elapsed % 60)
+        
+        print(f"✓ Brief generated in {mins}m {secs}s")
+        if save_msg.startswith("Successfully saved brief to"):
+            saved_path = save_msg.replace("Successfully saved brief to", "").strip()
+            print(f"✓ Saved to {saved_path}")
+        else:
+            print(save_msg)
         print("="*50 + "\n")
 
     except Exception as e:
