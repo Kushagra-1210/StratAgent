@@ -1,4 +1,3 @@
-````markdown
 # StratAgent
 
 ### Autonomous AI Strategy Consulting Agent
@@ -73,7 +72,7 @@ python main.py --company "Zomato" --problem "Gig worker strike impact"
       ▼
 OUTPUT
 Professional PDF Consulting Brief
-````
+```
 
 ---
 
