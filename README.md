@@ -1,31 +1,39 @@
+````markdown
 # StratAgent
-**Autonomous AI Strategy Consulting Agent**
 
-> *Research any company. Debate the options. Get a consulting brief. In 5 minutes. For free.*
+### Autonomous AI Strategy Consulting Agent
 
----
+Single-pass AI outputs are often overconfident and unchallenged.
 
-## What is StratAgent?
+Real strategy requires stress-testing — a devil’s advocate who finds the gaps before the client does.
 
-StratAgent is an autonomous two-agent AI system modeled after an MBB consulting engagement team. It researches a company using live financial data and news, conducts an adversarial strategic debate between two AI personas, and delivers a professionally formatted PDF consulting brief.
-
-Built by a 2nd year CS student. Zero infrastructure cost.
+StratAgent replicates the MBB consulting workflow: a Principal Strategist drafts, a Senior Partner critiques, and the Strategist refines. The result is a structured consulting brief with live financial data, generated in minutes.
 
 ---
 
-## Live Demo
+## Who This Is For
 
-**Sample Output 1:** [`samples/sample_brief_Paytm.pdf`](samples/sample_brief_Paytm.pdf)
-*Paytm — Path to profitability amid competition from PhonePe and GPay*
+- **Founders and operators** who need structured strategic analysis without hiring a consulting firm
+- **Analysts and Product Managers** who want a rigorous first-pass framework before building presentations
+- **Case interview candidates** who want real-company strategic briefs for practice
 
-**Sample Output 2:** [`samples/sample_brief_Zomato.pdf`](samples/sample_brief_Zomato.pdf)
-*Zomato — Gig Worker Strike Impact on Operations and Long Term Strategy*
+---
+
+## Sample Use Cases
+
+### Paytm — Path to Profitability
+
+Identified commission restructuring and platform fee optimization as primary value drivers. Recommended a phased implementation focused on UPI monetization before expanding credit products.
+
+### Zomato — Gig Worker Strike Impact
+
+Assessed operational disruption under multiple scenarios and recommended a hybrid employment model for high-density zones while maintaining flexibility elsewhere.
 
 ---
 
 ## Architecture
 
-```
+```text
 INPUT
 python main.py --company "Zomato" --problem "Gig worker strike impact"
       │
@@ -40,163 +48,209 @@ python main.py --company "Zomato" --problem "Gig worker strike impact"
       ▼
 ┌─────────────────────────────────────────────────────┐
 │  PHASE 2 — PRINCIPAL STRATEGIST                     │
-│  • Analyzes data through selected MBB framework     │
-│  • Identifies Strategic Tension                     │
-│  • Proposes 3 company-specific strategic options    │
-│  • Writes structured first draft                    │
+│  • Analyzes data through selected framework         │
+│  • Identifies strategic tension                     │
+│  • Generates company-specific options               │
+│  • Creates structured first draft                   │
 └─────────────────────────────────────────────────────┘
-      │  [65s pause — Groq rate limit management]
+      │
       ▼
 ┌─────────────────────────────────────────────────────┐
-│  PHASE 3 — SENIOR PARTNER (DEVIL'S ADVOCATE)        │
+│  PHASE 3 — SENIOR PARTNER                           │
 │  • Critiques the draft rigorously                   │
 │  • Identifies logical gaps and blind spots          │
-│  • Issues 3 directives for improvement              │
+│  • Issues improvement directives                    │
 └─────────────────────────────────────────────────────┘
-      │  [65s pause]
+      │
       ▼
 ┌─────────────────────────────────────────────────────┐
 │  PHASE 4 — FINAL POLISH                             │
 │  • Incorporates all critique                        │
-│  • Expands risk analysis and roadmaps               │
-│  • Writes final consulting brief                    │
+│  • Expands risk analysis                            │
+│  • Produces final consulting brief                  │
 └─────────────────────────────────────────────────────┘
       │
       ▼
-OUTPUT — Professional PDF saved to output/
-  • Framework citation (author + year)
-  • Situation with live financial data
-  • Strategic Tension
-  • 3 Strategic Options
-  • Recommendation
-  • Data Confidence Score (1-5 based on source gaps)
-  • Financial Metrics 1x2 Subplot (Returns vs. Valuation)
-  • Generation Runtime Analytics
-```
+OUTPUT
+Professional PDF Consulting Brief
+````
 
 ---
 
 ## Why Adversarial Architecture?
 
-Single-pass AI outputs are overconfident — they never challenge their own assumptions.
+Most AI-generated strategy recommendations are never challenged.
 
-Real MBB consulting teams use senior partners to stress-test analyst recommendations before they reach clients. StratAgent replicates this process: a Strategist proposes, a Devil's Advocate identifies weaknesses, the Strategist refines.
+Consulting firms improve recommendation quality through internal review and debate before presenting to clients.
 
-The result is more rigorous, more balanced, and more honest than any single-pass generation.
+StratAgent follows the same principle:
+
+1. **Strategist proposes**
+2. **Senior Partner critiques**
+3. **Strategist refines**
+
+This creates recommendations that are more balanced, defensible, and realistic than a single-pass AI response.
 
 ---
 
 ## Framework Selection Logic
 
-StratAgent dynamically selects the most appropriate analytical framework using 10 priority-ordered rules based on the problem type:
+StratAgent dynamically selects the most appropriate framework based on the business problem.
 
-| Framework | Author | Year | Used For |
-|---|---|---|---|
-| Treacy & Wiersema Value Disciplines | Treacy & Wiersema | 1995 | Strategic positioning, value proposition |
-| Porter's Five Forces | Michael Porter | 1979 | Competitive dynamics, market entry |
-| Ansoff Matrix | Igor Ansoff | 1957 | Growth strategies, expansion |
-| Value Chain Analysis | Michael Porter | 1985 | Cost reduction, profitability |
-| McKinsey 7S | Peters & Waterman | 1980 | Organizational alignment, internal gaps |
-| BCG Matrix | Bruce Henderson | 1970 | Portfolio decisions, resource allocation |
-| Scenario Planning | Shell/GBN | 1970s | Macro uncertainty, regulatory risk |
-| Jobs To Be Done | Clayton Christensen | 2016 | Customer behavior, product innovation |
-| VRIO Framework | Jay Barney | 1991 | Competitive advantage sustainability |
-| MECE Issue Tree | McKinsey standard | — | Root cause analysis, problem decomposition |
+| Framework            | Author              | Use Case                       |
+| -------------------- | ------------------- | ------------------------------ |
+| Porter's Five Forces | Michael Porter      | Competitive dynamics           |
+| Ansoff Matrix        | Igor Ansoff         | Growth strategies              |
+| Value Chain Analysis | Michael Porter      | Cost reduction & profitability |
+| McKinsey 7S          | Peters & Waterman   | Organizational alignment       |
+| BCG Matrix           | Bruce Henderson     | Portfolio decisions            |
+| Scenario Planning    | Shell / GBN         | Regulatory & macro uncertainty |
+| Jobs To Be Done      | Clayton Christensen | Customer behavior              |
+| VRIO Framework       | Jay Barney          | Sustainable advantage          |
+| Value Disciplines    | Treacy & Wiersema   | Strategic positioning          |
+| MECE Issue Tree      | McKinsey            | Root-cause analysis            |
 
 ---
 
 ## Tech Stack
 
-| Tool | Purpose | Cost |
-|---|---|---|
-| CrewAI | Multi-agent orchestration | Free |
-| Groq API — Llama 3.3 70B | LLM inference | Free |
-| Screener.in | Live financial metrics | Free |
-| Google News RSS | Live news headlines | Free |
-| FPDF2 | PDF generation | Free |
-| Matplotlib | Financial charts | Free |
-| Python 3.11 | Core language | Free |
+| Technology               | Purpose                   |
+| ------------------------ | ------------------------- |
+| CrewAI                   | Multi-agent orchestration |
+| Groq API (Llama 3.3 70B) | LLM inference             |
+| Screener.in              | Financial data            |
+| Google News RSS          | News intelligence         |
+| FPDF2                    | PDF generation            |
+| Matplotlib               | Visualizations            |
+| Python 3.11              | Core development          |
 
-**Total infrastructure cost: ₹0/month**
+---
+
+## Features
+
+* Multi-agent consulting workflow
+* Automatic framework selection
+* Live financial data integration
+* Live news intelligence
+* Strategic tension identification
+* Scenario-based recommendations
+* Structured PDF consulting brief generation
+* Risk and implementation roadmap analysis
 
 ---
 
 ## Quick Start
 
-**Prerequisites:** Python 3.9+, free Groq API key from [console.groq.com](https://console.groq.com)
+### 1. Clone the Repository
 
 ```bash
-# 1. Clone
 git clone https://github.com/Kushagra-1210/StratAgent.git
 cd StratAgent
+```
 
-# 2. Install dependencies
+### 2. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# 3. Configure — create a .env file in the project root
-echo "GROQ_API_KEY=your_key_here" > .env
+### 3. Configure Environment Variables
 
-# 4. Run
+Create a `.env` file:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+### 4. Run the Agent
+
+```bash
 python main.py --company "Zomato" --problem "Impact of fuel price hike on profitability"
 ```
 
-Output PDF appears in the `output/` folder.
+Generated reports will be saved in the `output/` directory.
 
 ---
 
 ## Example Queries
 
 ```bash
-# Food delivery — operational problem
-python main.py --company "Zomato" --problem "Gig worker strike impact on operations"
+python main.py --company "Zomato" \
+--problem "Gig worker strike impact on operations"
 
-# Jewellery — market problem
-python main.py --company "Titan" --problem "Impact of gold advisory on revenue"
+python main.py --company "Titan" \
+--problem "Impact of gold price volatility on revenue"
 
-# IT services — macro problem
-python main.py --company "Infosys" --problem "US visa restrictions impact on revenue growth"
+python main.py --company "Infosys" \
+--problem "US visa restrictions impact on growth"
 
-# Fintech — competitive problem
-python main.py --company "Paytm" --problem "Path to profitability amid competition"
+python main.py --company "Paytm" \
+--problem "Path to profitability amid competition"
 ```
 
 ---
 
 ## Project Structure
 
-```
+```text
 StratAgent/
-├── main.py           # Entry point — CLI args, crew orchestration, PDF save
-├── agents.py         # Two AI agents — Principal Strategist + Senior Partner
-├── tasks.py          # Three tasks — Draft, Critique, Final Polish
-├── tools.py          # Data layer — Screener.in scraper, News RSS, PDF engine
-├── requirements.txt  # Dependencies
-├── samples/          # Sample PDF outputs
-└── .gitignore        # Excludes .env, output/, .venv/
+├── main.py
+├── agents.py
+├── tasks.py
+├── tools.py
+├── requirements.txt
+├── samples/
+├── output/
+└── .gitignore
 ```
 
 ---
 
-## Data Sources & Limitations
+## Data Sources
 
-**Live data fetched on every run:**
-- Financial metrics via Screener.in (Market Cap, ROCE, ROE, PE Ratio, Price)
-- News via Google News RSS (latest headlines)
+### Financial Data
 
-**Known limitations:**
-- News content is headline-only — full articles are behind paywalls
-- Financial data limited to metrics available on Screener.in public pages
-- Analysis quality improves with companies that have strong news coverage
+* Market Capitalization
+* ROE
+* ROCE
+* PE Ratio
+* Current Share Price
+
+Source: Screener.in
+
+### News Data
+
+* Latest company-related headlines
+* Industry developments
+* Macro-economic events
+
+Source: Google News RSS
 
 ---
 
-## About
+## Limitations
 
-Built by **Kushagra Bansal**
-B.Tech Computer Science & Engineering — Shiv Nadar University (2024–28)
-
-[LinkedIn](https://www.linkedin.com/in/kushagra-kb1210) · [GitHub](https://github.com/Kushagra-1210)
+* News analysis relies on publicly available headlines
+* Some companies may have limited media coverage
+* Financial data availability depends on public disclosures
+* Outputs are intended for strategic exploration, not investment or consulting advice
 
 ---
 
-*StratAgent is a portfolio project demonstrating autonomous AI agent architecture applied to strategic analysis. It is not a substitute for professional consulting advice.*
+## Author
+
+**Kushagra Bansal**
+
+B.Tech Computer Science & Engineering  
+Shiv Nadar University (2024–2028)
+
+[GitHub](https://github.com/Kushagra-1210) • [LinkedIn](https://www.linkedin.com/in/kushagra-kb1210)
+
+---
+
+## Disclaimer
+
+StratAgent is a portfolio project demonstrating autonomous AI-agent architecture applied to strategic consulting workflows.
+
+It is not a substitute for professional consulting, legal, financial, or investment advice.
+
