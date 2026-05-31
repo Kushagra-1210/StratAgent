@@ -23,10 +23,12 @@ StratAgent replicates the MBB consulting workflow: a Principal Strategist drafts
 ### Paytm — Path to Profitability
 
 Identified commission restructuring and platform fee optimization as primary value drivers. Recommended a phased implementation focused on UPI monetization before expanding credit products.
+[View Full Brief](https://github.com/Kushagra-1210/StratAgent/blob/main/samples/sample_brief_Paytm.pdf)
 
 ### Zomato — Gig Worker Strike Impact
 
 Assessed operational disruption under multiple scenarios and recommended a hybrid employment model for high-density zones while maintaining flexibility elsewhere.
+[View Full Brief](https://github.com/Kushagra-1210/StratAgent/blob/main/samples/sample_brief_Zomato.pdf)
 
 ---
 
