@@ -127,19 +127,6 @@ StratAgent dynamically selects the most appropriate framework based on the busin
 
 ---
 
-## Features
-
-* Multi-agent consulting workflow
-* Automatic framework selection
-* Live financial data integration
-* Live news intelligence
-* Strategic tension identification
-* Scenario-based recommendations
-* Structured PDF consulting brief generation
-* Risk and implementation roadmap analysis
-
----
-
 ## Quick Start
 
 ### 1. Clone the Repository
@@ -231,10 +218,16 @@ Source: Google News RSS
 
 ## Limitations
 
-* News analysis relies on publicly available headlines
-* Some companies may have limited media coverage
-* Financial data availability depends on public disclosures
-* Outputs are intended for strategic exploration, not investment or consulting advice
+- News content is headline-only — full articles 
+  are behind paywalls
+- Financial data limited to metrics available 
+  on Screener.in public pages
+- Analysis quality improves with companies that 
+  have strong news coverage
+- Framework selection optimised for strategic 
+  positioning and competitive problems
+- Data Confidence scores reflect data 
+  availability, not analytical certainty
 
 ---
 
